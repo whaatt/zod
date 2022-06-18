@@ -225,6 +225,15 @@ Sponsorship at any level is appreciated and encouraged. For individual developer
       <br />
       <a href="https://seasoned.cc">seasoned.cc</a>
     </td>
+    <td align="center">
+      <a href="https://seasoned.cc">
+        <img src="https://avatars.githubusercontent.com/u/67802063?s=200&v=4" width="150px;" alt="" />
+      </a>
+      <br />
+      <b>Interval</b>
+      <br />
+      <a href="https://interval.com">interval.com</a>
+    </td>
   </tr>
 </table>
 
@@ -444,7 +453,7 @@ z.string().nonempty({ message: "Can't be empty" });
 
 > Check out [validator.js](https://github.com/validatorjs/validator.js) for a bunch of other useful string validation functions.
 
-You can customize some common errors messages when creating a string schema.
+You can customize some common error messages when creating a string schema.
 
 ```ts
 const name = z.string({
@@ -558,7 +567,7 @@ const VALUES = ["Salmon", "Tuna", "Trout"] as const;
 const FishEnum = z.enum(VALUES);
 ```
 
-This is not allowed, since Zod isn't able to infer the exact values of each elements.
+This is not allowed, since Zod isn't able to infer the exact values of each element.
 
 ```ts
 const fish = ["Salmon", "Tuna", "Trout"];
@@ -739,7 +748,7 @@ Dog.shape.age; // => number schema
 
 ### `.extend`
 
-You can add additional fields an object schema with the `.extend` method.
+You can add additional fields to an object schema with the `.extend` method.
 
 ```ts
 const DogWithBreed = Dog.extend({
@@ -859,7 +868,7 @@ const deepPartialUser = user.deepPartial();
 
 ### `.passthrough`
 
-By default Zod objects schemas strip out unrecognized keys during parsing.
+By default Zod object schemas strip out unrecognized keys during parsing.
 
 ```ts
 const person = z.object({
@@ -886,7 +895,7 @@ person.passthrough().parse({
 
 ### `.strict`
 
-By default Zod objects schemas strip out unrecognized keys during parsing. You can _disallow_ unknown keys with `.strict()` . If there are any unknown keys in the input, Zod will throw an error.
+By default Zod object schemas strip out unrecognized keys during parsing. You can _disallow_ unknown keys with `.strict()` . If there are any unknown keys in the input, Zod will throw an error.
 
 ```ts
 const person = z
@@ -1334,7 +1343,7 @@ type myFunction = z.infer<typeof myFunction>;
 // => (arg0: string)=>number
 ``` -->
 
-Function schemas have an `.implement()` method which accepts a function and returns a new function that automatically validates it's inputs and outputs.
+Function schemas have an `.implement()` method which accepts a function and returns a new function that automatically validates its inputs and outputs.
 
 ```ts
 const trimmedLength = z
@@ -1552,7 +1561,7 @@ const userId = z.string().refine(async (id) => {
 });
 ```
 
-> ⚠️If you use async refinements, you must use the `.parseAsync` method to parse data! Otherwise Zod will throw an error.
+> ⚠️ If you use async refinements, you must use the `.parseAsync` method to parse data! Otherwise Zod will throw an error.
 
 #### Relationship to transforms
 
@@ -1608,7 +1617,7 @@ const Strings = z.array(z.string()).superRefine((val, ctx) => {
   if (val.length !== new Set(val).size) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
-      message: `No duplicated allowed.`,
+      message: `No duplicates allowed.`,
     });
   }
 });
